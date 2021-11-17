@@ -90,7 +90,7 @@ using REGISTRODEAUSENCIAS.Blazor.Shared;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 28 "C:\SIEMPRE.NET\CURSO PRACTICO\PROYECTO REGISTROAUSEN\REGISTRODEAUSENCIAS.Blazor\Shared\NavMenu.razor"
+#line 33 "C:\SIEMPRE.NET\CURSO PRACTICO\PROYECTO REGISTROAUSEN\REGISTRODEAUSENCIAS.Blazor\Shared\NavMenu.razor"
        
     private bool collapseNavMenu = true;
 

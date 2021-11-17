@@ -13,70 +13,70 @@ namespace REGISTRODEAUSENCIAS.Blazor.Shared
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Components;
 #nullable restore
-#line 1 "C:\SIEMPRE.NET\CURSO PRACTICO\RegistroDeAusencias\REGISTRODEAUSENCIAS.Blazor\_Imports.razor"
+#line 1 "C:\SIEMPRE.NET\CURSO PRACTICO\PROYECTO REGISTROAUSEN\REGISTRODEAUSENCIAS.Blazor\_Imports.razor"
 using System.Net.Http;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "C:\SIEMPRE.NET\CURSO PRACTICO\RegistroDeAusencias\REGISTRODEAUSENCIAS.Blazor\_Imports.razor"
+#line 2 "C:\SIEMPRE.NET\CURSO PRACTICO\PROYECTO REGISTROAUSEN\REGISTRODEAUSENCIAS.Blazor\_Imports.razor"
 using Microsoft.AspNetCore.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "C:\SIEMPRE.NET\CURSO PRACTICO\RegistroDeAusencias\REGISTRODEAUSENCIAS.Blazor\_Imports.razor"
+#line 3 "C:\SIEMPRE.NET\CURSO PRACTICO\PROYECTO REGISTROAUSEN\REGISTRODEAUSENCIAS.Blazor\_Imports.razor"
 using Microsoft.AspNetCore.Components.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 4 "C:\SIEMPRE.NET\CURSO PRACTICO\RegistroDeAusencias\REGISTRODEAUSENCIAS.Blazor\_Imports.razor"
+#line 4 "C:\SIEMPRE.NET\CURSO PRACTICO\PROYECTO REGISTROAUSEN\REGISTRODEAUSENCIAS.Blazor\_Imports.razor"
 using Microsoft.AspNetCore.Components.Forms;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 5 "C:\SIEMPRE.NET\CURSO PRACTICO\RegistroDeAusencias\REGISTRODEAUSENCIAS.Blazor\_Imports.razor"
+#line 5 "C:\SIEMPRE.NET\CURSO PRACTICO\PROYECTO REGISTROAUSEN\REGISTRODEAUSENCIAS.Blazor\_Imports.razor"
 using Microsoft.AspNetCore.Components.Routing;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 6 "C:\SIEMPRE.NET\CURSO PRACTICO\RegistroDeAusencias\REGISTRODEAUSENCIAS.Blazor\_Imports.razor"
+#line 6 "C:\SIEMPRE.NET\CURSO PRACTICO\PROYECTO REGISTROAUSEN\REGISTRODEAUSENCIAS.Blazor\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 7 "C:\SIEMPRE.NET\CURSO PRACTICO\RegistroDeAusencias\REGISTRODEAUSENCIAS.Blazor\_Imports.razor"
+#line 7 "C:\SIEMPRE.NET\CURSO PRACTICO\PROYECTO REGISTROAUSEN\REGISTRODEAUSENCIAS.Blazor\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web.Virtualization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 8 "C:\SIEMPRE.NET\CURSO PRACTICO\RegistroDeAusencias\REGISTRODEAUSENCIAS.Blazor\_Imports.razor"
+#line 8 "C:\SIEMPRE.NET\CURSO PRACTICO\PROYECTO REGISTROAUSEN\REGISTRODEAUSENCIAS.Blazor\_Imports.razor"
 using Microsoft.JSInterop;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 9 "C:\SIEMPRE.NET\CURSO PRACTICO\RegistroDeAusencias\REGISTRODEAUSENCIAS.Blazor\_Imports.razor"
+#line 9 "C:\SIEMPRE.NET\CURSO PRACTICO\PROYECTO REGISTROAUSEN\REGISTRODEAUSENCIAS.Blazor\_Imports.razor"
 using REGISTRODEAUSENCIAS.Blazor;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 10 "C:\SIEMPRE.NET\CURSO PRACTICO\RegistroDeAusencias\REGISTRODEAUSENCIAS.Blazor\_Imports.razor"
+#line 10 "C:\SIEMPRE.NET\CURSO PRACTICO\PROYECTO REGISTROAUSEN\REGISTRODEAUSENCIAS.Blazor\_Imports.razor"
 using REGISTRODEAUSENCIAS.Blazor.Shared;
 
 #line default
