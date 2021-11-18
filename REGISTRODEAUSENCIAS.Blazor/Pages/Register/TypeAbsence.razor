@@ -1,0 +1,99 @@
+﻿@page "/typeofabsence"
+
+
+<div class="container-fluid">
+    <div class="card">
+        <div class="card-header">
+            <div class="card-title">
+                <h4>Tipo de ausencia</h4>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row mb-3">
+                <div class="col-md-4">
+                    <label>Empleado</label>
+                    <select class="form-control">
+                        <option value="1">Empleado1</option>
+                        <option value="2">Empleado2</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <label>Empleado</label>
+                    <select class="form-control">
+                        <option value="1">Tipo</option>
+                        <option value="2">Ausencia2</option>
+                    </select>
+                </div>
+                <div class="col-md-2">
+                    <label>Fecha</label>
+                    <input type="date" class="form-control" placeholder="Fecha" />
+                </div>
+                <div class="col-md-2">
+                    <label># de horas</label>
+                    <input type="number" class="form-control" placeholder="Horas" />
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-12">
+                    <label>Observación</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Observaciones" />
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-primary">Agregar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <table class="table table-bordered table-sm">
+                        <thead>
+                            <tr>
+                                <th>Empleado</th>
+                                <th>Fecha</th>
+                                <th>Tipo</th>
+                                <th>Horas</th>
+                                <th>Observación</th>
+                                <th>Opciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                                <tr>
+                                    <td>
+                                        <input type="text" class="form-control" />
+                                    </td>
+                                    <td>
+                                        <input type="date" class="form-control" />
+                                    </td>
+                                    <td>
+                                        <input type="number" class="form-control"/>
+                                    </td>
+                                    <td>
+                                        <input type="number" class="form-control" />
+                                    </td>
+                                    <td>
+                                        <input type="number" class="form-control"/>
+                                    </td>
+                                    <td>
+                                        <button type="button" class="btn btn-success btn-sm"><i class="fa fa-save"></i></button>
+
+                                        <button type="button" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>
+                                    </td>
+                                </tr>
+                       
+                        </tbody>
+                    </table>
+
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+@code {
+
+}

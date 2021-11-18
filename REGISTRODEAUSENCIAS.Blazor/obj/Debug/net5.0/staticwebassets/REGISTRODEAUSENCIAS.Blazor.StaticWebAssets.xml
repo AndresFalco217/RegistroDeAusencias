@@ -1,3 +1,4 @@
 ﻿<StaticWebAssets Version="1.0">
   <ContentRoot BasePath="/" Path="C:\SIEMPRE.NET\CURSO PRACTICO\PROYECTO REGISTROAUSEN\REGISTRODEAUSENCIAS.Blazor\obj\Debug\net5.0\scopedcss\bundle\" />
+  <ContentRoot BasePath="_content/Sotsera.Blazor.Toaster" Path="C:\Users\Falco\.nuget\packages\sotsera.blazor.toaster\3.0.0\build\..\staticwebassets\" />
 </StaticWebAssets>

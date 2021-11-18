@@ -1,2 +1,12 @@
 ﻿@page "/"
 
+@inject EmployeeServices employeeService
+
+<button class="btn btn-primary" @onclick="ListEmployees">Lista Employee</button>
+
+@code{
+    protected void ListEmployees()
+    {
+        var lista = employeeService.ListEmployees();
+    }
+} 

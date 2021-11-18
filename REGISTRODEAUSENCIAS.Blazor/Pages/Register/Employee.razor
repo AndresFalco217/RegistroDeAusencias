@@ -1,0 +1,135 @@
+﻿@page "/employees"
+
+<div class="container-fluid">
+    <div class="card">
+        <div class="card-header">
+            <div class="card-title">
+                <h4>Empleados</h4>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label>Nombres</label>
+                    <input type="text" class="form-control" placeholder="Nombres" @bind="Model.Names"/>
+                </div>
+                <div class="col-md-6">
+                    <label>Apellidos</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Apellidos" @bind="Model.Surnames"/>
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-primary" @onclick="AddEmployee">Agregar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <table class="table table-bordered table-sm">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Nombres</th>
+                                <th>Apellidos</th>
+                                <th>Opciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var empl in ListEmployee)
+                            {
+                            <tr>
+                                <td>
+                                    <input type="text" class="form-control" @bind="empl.Id" />
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control" @bind="empl.Names" />
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control" @bind="empl.Surnames"/>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-success btn-sm" @onclick="(()=>UpdateEmployee(empl))"><i class="fa fa-save"></i>Guardar</button>
+
+                                    <button type="button" class="btn btn-danger btn-sm" @onclick="(()=>DeleteEmployee(empl.Id))"><i class="fa fa-trash"></i>Eliminar</button>
+                                </td>
+                            </tr>
+                            }
+
+                        </tbody>
+                    </table>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<ToastContainer/>
+
+@inject EmployeeServices employeeServices
+
+@inject IToaster toaster
+
+@code {
+    public REGISTRODEAUSENCIAS.Blazor.Data.Models.EmployeeModel Model { get; set; } = new Data.Models.EmployeeModel();
+    public List<REGISTRODEAUSENCIAS.Blazor.Data.Models.EmployeeModel> ListEmployee { get; set; } = new List<Data.Models.EmployeeModel>();
+
+
+    protected override void OnInitialized()
+    {
+        loademployees();
+    }
+
+    protected void loademployees()
+    {
+        var result = employeeServices.ListEmployees();
+        ListEmployee = result;
+    }
+
+    protected void AddEmployee()
+    {
+
+        var result = employeeServices.Register(Model);
+        if (result.IsSuccess)
+        {
+            Model.Id = result.Code;
+            ListEmployee.Add(Model);
+
+            Model = new Data.Models.EmployeeModel();
+            toaster.Success(result.Message, "OK");
+        }
+        else
+        {
+            toaster.Error(result.Message, "Error");
+        }
+    }
+
+    protected void UpdateEmployee(REGISTRODEAUSENCIAS.Blazor.Data.Models.EmployeeModel employee)
+    {
+
+        var result = employeeServices.Update(employee);
+        if (result.IsSuccess)
+        {
+            Model = new Data.Models.EmployeeModel();
+            toaster.Success(result.Message, "OK");
+        }
+        else
+        {
+            toaster.Error(result.Message, "Error");
+        }
+    }
+
+    protected void DeleteEmployee(int idEmployee)
+    {
+        var result = employeeServices.Delete(idEmployee);
+        if (result.IsSuccess)
+        {
+            loademployees();
+            toaster.Success(result.Message, "OK");
+        }
+        else
+        {
+            toaster.Error(result.Message, "Error");
+        }
+    }
+}

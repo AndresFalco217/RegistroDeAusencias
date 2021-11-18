@@ -69,15 +69,29 @@ using Microsoft.JSInterop;
 #line hidden
 #nullable disable
 #nullable restore
-#line 9 "C:\SIEMPRE.NET\CURSO PRACTICO\PROYECTO REGISTROAUSEN\REGISTRODEAUSENCIAS.Blazor\_Imports.razor"
+#line 10 "C:\SIEMPRE.NET\CURSO PRACTICO\PROYECTO REGISTROAUSEN\REGISTRODEAUSENCIAS.Blazor\_Imports.razor"
 using REGISTRODEAUSENCIAS.Blazor;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 10 "C:\SIEMPRE.NET\CURSO PRACTICO\PROYECTO REGISTROAUSEN\REGISTRODEAUSENCIAS.Blazor\_Imports.razor"
+#line 11 "C:\SIEMPRE.NET\CURSO PRACTICO\PROYECTO REGISTROAUSEN\REGISTRODEAUSENCIAS.Blazor\_Imports.razor"
 using REGISTRODEAUSENCIAS.Blazor.Shared;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 13 "C:\SIEMPRE.NET\CURSO PRACTICO\PROYECTO REGISTROAUSEN\REGISTRODEAUSENCIAS.Blazor\_Imports.razor"
+using REGISTRODEAUSENCIAS.Blazor.Data.Services;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 14 "C:\SIEMPRE.NET\CURSO PRACTICO\PROYECTO REGISTROAUSEN\REGISTRODEAUSENCIAS.Blazor\_Imports.razor"
+using Sotsera.Blazor.Toaster;
 
 #line default
 #line hidden
@@ -90,6 +104,18 @@ using REGISTRODEAUSENCIAS.Blazor.Shared;
         {
         }
         #pragma warning restore 1998
+#nullable restore
+#line 7 "C:\SIEMPRE.NET\CURSO PRACTICO\PROYECTO REGISTROAUSEN\REGISTRODEAUSENCIAS.Blazor\Pages\Index.razor"
+      
+    protected void ListEmployees()
+    {
+        var lista = employeeService.ListEmployees();
+    }
+
+#line default
+#line hidden
+#nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private EmployeeServices employeeService { get; set; }
     }
 }
 #pragma warning restore 1591
