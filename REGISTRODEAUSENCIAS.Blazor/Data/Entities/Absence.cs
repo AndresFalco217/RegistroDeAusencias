@@ -11,7 +11,7 @@ namespace REGISTRODEAUSENCIAS.Blazor.Data
         public int IdEmployee { get; set; }
         public int IdAbsence { get; set; }
         public DateTime Date { get; set; }
-        public DateTime Hours { get; set; }
+        public int Hours { get; set; }
         public string ObservationsObservationsObservations { get; set; }
 
         public virtual TypeOfAbsence IdAbsenceNavigation { get; set; }

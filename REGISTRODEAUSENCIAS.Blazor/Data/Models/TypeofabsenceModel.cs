@@ -6,12 +6,10 @@ using System.Threading.Tasks;
 
 namespace REGISTRODEAUSENCIAS.Blazor.Data.Models
 {
-    public class EmployeeModel
+    public class TypeofabsenceModel
     {
         public int Id { get; set; }
-        [Required(ErrorMessage = "El nombre es obligatorio")]
-        public string Names { get; set; }
-        [Required(ErrorMessage = "El apellido es obligatorio")]
-        public string Surnames { get; set; }
+        [Required(ErrorMessage = "Campo obligatorio")]
+        public string Name { get; set; }
     }
 }

@@ -1,7 +1,12 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\REGISTRODEAUSENCIAS.Blazor",
+    "\\REGISTRODEAUSENCIAS.Blazor\\Data",
+    "\\REGISTRODEAUSENCIAS.Blazor\\Data\\Services",
+    "\\REGISTRODEAUSENCIAS.Blazor\\Pages",
+    "\\REGISTRODEAUSENCIAS.Blazor\\Pages\\Register"
   ],
-  "SelectedNode": "\\RegistroDeAusencias.sln",
+  "SelectedNode": "\\REGISTRODEAUSENCIAS.Blazor\\Pages\\Register\\Absence.razor",
   "PreviewInSolutionExplorer": false
 }

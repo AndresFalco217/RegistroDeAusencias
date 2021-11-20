@@ -96,84 +96,13 @@ using Sotsera.Blazor.Toaster;
 #line default
 #line hidden
 #nullable disable
-    [Microsoft.AspNetCore.Components.RouteAttribute("/employees")]
-    public partial class Employee : Microsoft.AspNetCore.Components.ComponentBase
+    public partial class Reports : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
         {
         }
         #pragma warning restore 1998
-#nullable restore
-#line 74 "C:\SIEMPRE.NET\CURSO PRACTICO\PROYECTO REGISTROAUSEN\REGISTRODEAUSENCIAS.Blazor\Pages\Register\Employee.razor"
-       
-    public REGISTRODEAUSENCIAS.Blazor.Data.Models.EmployeeModel Model { get; set; } = new Data.Models.EmployeeModel();
-    public List<REGISTRODEAUSENCIAS.Blazor.Data.Models.EmployeeModel> ListEmployee { get; set; } = new List<Data.Models.EmployeeModel>();
-
-
-    protected override void OnInitialized()
-    {
-        loademployees();
-    }
-
-    protected void loademployees()
-    {
-        var result = employeeServices.ListEmployees();
-        ListEmployee = result;
-    }
-
-    protected void AddEmployee()
-    {
-
-        var result = employeeServices.Register(Model);
-        if (result.IsSuccess)
-        {
-            Model.Id = result.Code;
-            ListEmployee.Add(Model);
-
-            Model = new Data.Models.EmployeeModel();
-            toaster.Success(result.Message, "OK");
-        }
-        else
-        {
-            toaster.Error(result.Message, "Error");
-        }
-    }
-
-    protected void UpdateEmployee(REGISTRODEAUSENCIAS.Blazor.Data.Models.EmployeeModel employee)
-    {
-
-        var result = employeeServices.Update(employee);
-        if (result.IsSuccess)
-        {
-            Model = new Data.Models.EmployeeModel();
-            toaster.Success(result.Message, "OK");
-        }
-        else
-        {
-            toaster.Error(result.Message, "Error");
-        }
-    }
-
-    protected void DeleteEmployee(int idEmployee)
-    {
-        var result = employeeServices.Delete(idEmployee);
-        if (result.IsSuccess)
-        {
-            loademployees();
-            toaster.Success(result.Message, "OK");
-        }
-        else
-        {
-            toaster.Error(result.Message, "Error");
-        }
-    }
-
-#line default
-#line hidden
-#nullable disable
-        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IToaster toaster { get; set; }
-        [global::Microsoft.AspNetCore.Components.InjectAttribute] private EmployeeServices employeeServices { get; set; }
     }
 }
 #pragma warning restore 1591

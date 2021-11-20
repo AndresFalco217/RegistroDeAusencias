@@ -107,15 +107,15 @@ using Sotsera.Blazor.Toaster;
 #nullable restore
 #line 7 "C:\SIEMPRE.NET\CURSO PRACTICO\PROYECTO REGISTROAUSEN\REGISTRODEAUSENCIAS.Blazor\Pages\Index.razor"
       
-    protected void ListEmployees()
+    protected void ListTypee()
     {
-        var lista = employeeService.ListEmployees();
+        var lista = typeofabsenceServices.ListType();
     }
 
 #line default
 #line hidden
 #nullable disable
-        [global::Microsoft.AspNetCore.Components.InjectAttribute] private EmployeeServices employeeService { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private TypeofabsenceServices typeofabsenceServices { get; set; }
     }
 }
 #pragma warning restore 1591

@@ -1,12 +1,12 @@
 ﻿@page "/"
 
-@inject EmployeeServices employeeService
+@inject TypeofabsenceServices typeofabsenceServices
 
-<button class="btn btn-primary" @onclick="ListEmployees">Lista Employee</button>
+<button class="btn btn-primary" @onclick="ListTypee">Lista</button>
 
 @code{
-    protected void ListEmployees()
+    protected void ListTypee()
     {
-        var lista = employeeService.ListEmployees();
+        var lista = typeofabsenceServices.ListType();
     }
 } 

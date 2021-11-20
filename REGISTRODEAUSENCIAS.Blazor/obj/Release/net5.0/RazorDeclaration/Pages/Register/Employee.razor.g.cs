@@ -128,13 +128,30 @@ using Sotsera.Blazor.Toaster;
         var result = employeeServices.Register(Model);
         if (result.IsSuccess)
         {
+            Model.Id = result.Code;
             ListEmployee.Add(Model);
+
             Model = new Data.Models.EmployeeModel();
             toaster.Success(result.Message, "OK");
         }
         else
         {
-            toaster.Success(result.Message, "Error");
+            toaster.Error(result.Message, "Error");
+        }
+    }
+
+    protected void UpdateEmployee(REGISTRODEAUSENCIAS.Blazor.Data.Models.EmployeeModel employee)
+    {
+
+        var result = employeeServices.Update(employee);
+        if (result.IsSuccess)
+        {
+            Model = new Data.Models.EmployeeModel();
+            toaster.Success(result.Message, "OK");
+        }
+        else
+        {
+            toaster.Error(result.Message, "Error");
         }
     }
 
@@ -143,11 +160,12 @@ using Sotsera.Blazor.Toaster;
         var result = employeeServices.Delete(idEmployee);
         if (result.IsSuccess)
         {
+            loademployees();
             toaster.Success(result.Message, "OK");
         }
         else
         {
-            toaster.Success(result.Message, "Error");
+            toaster.Error(result.Message, "Error");
         }
     }
 

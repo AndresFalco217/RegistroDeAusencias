@@ -1,99 +1,128 @@
 ﻿@page "/typeofabsence"
 
-
 <div class="container-fluid">
     <div class="card">
         <div class="card-header">
             <div class="card-title">
-                <h4>Tipo de ausencia</h4>
+                <h4>TIPOS DE AUSENCIA</h4>
             </div>
         </div>
         <div class="card-body">
-            <div class="row mb-3">
-                <div class="col-md-4">
-                    <label>Empleado</label>
-                    <select class="form-control">
-                        <option value="1">Empleado1</option>
-                        <option value="2">Empleado2</option>
-                    </select>
-                </div>
-                <div class="col-md-4">
-                    <label>Empleado</label>
-                    <select class="form-control">
-                        <option value="1">Tipo</option>
-                        <option value="2">Ausencia2</option>
-                    </select>
-                </div>
-                <div class="col-md-2">
-                    <label>Fecha</label>
-                    <input type="date" class="form-control" placeholder="Fecha" />
-                </div>
-                <div class="col-md-2">
-                    <label># de horas</label>
-                    <input type="number" class="form-control" placeholder="Horas" />
-                </div>
-            </div>
-            <div class="row mb-3">
-                <div class="col-md-12">
-                    <label>Observación</label>
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Observaciones" />
-                        <div class="input-group-append">
-                            <button type="submit" class="btn btn-primary">Agregar</button>
+            <EditForm Model="Model" OnValidSubmit="AddType">
+                <DataAnnotationsValidator></DataAnnotationsValidator>
+                <div class="row mb-3">
+                    <div class="col-md-12">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Ingrese el tipo de ausencia" @bind="Model.Name" />
+                            <div class="input-group-append">
+                                <button type="submit" class="btn btn-primary">Agregar</button>
+                            </div>
                         </div>
+                        <ValidationMessage For="(()=>Model.Name)" />
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-12">
-                    <table class="table table-bordered table-sm">
-                        <thead>
-                            <tr>
-                                <th>Empleado</th>
-                                <th>Fecha</th>
-                                <th>Tipo</th>
-                                <th>Horas</th>
-                                <th>Observación</th>
-                                <th>Opciones</th>
-                            </tr>
-                        </thead>
-                        <tbody>
+            </EditForm>
+                <div class="row">
+                    <div class="col-12">
+                        <table class="table table-bordered table-sm">
+                            <thead>
                                 <tr>
-                                    <td>
-                                        <input type="text" class="form-control" />
-                                    </td>
-                                    <td>
-                                        <input type="date" class="form-control" />
-                                    </td>
-                                    <td>
-                                        <input type="number" class="form-control"/>
-                                    </td>
-                                    <td>
-                                        <input type="number" class="form-control" />
-                                    </td>
-                                    <td>
-                                        <input type="number" class="form-control"/>
-                                    </td>
-                                    <td>
-                                        <button type="button" class="btn btn-success btn-sm"><i class="fa fa-save"></i></button>
-
-                                        <button type="button" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>
-                                    </td>
+                                    <th>Tipo de ausencia</th>
+                                    <th class="text-center">Opciones</th>
                                 </tr>
-                       
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                @foreach (var type in ListTypee)
+                                {
+                                    <tr>
+                                        <td>
+                                            <input type="text" class="form-control" @bind="type.Name" />
+                                        </td>
+
+                                        <td class="text-center">
+                                            <button type="button" class="btn btn-success btn-sm"><i class="fa fa-save" @onclick="(()=>UpTypeof(type))"></i>Guardar</button>
+
+                                            <button type="button" class="btn btn-danger btn-sm"><i class="fa fa-trash" @onclick="(()=>DeleteType(type.Id))"></i>Eliminar</button>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
 
 
+                    </div>
                 </div>
-            </div>
-
-        </div>
+</div>
     </div>
 </div>
 
+<ToastContainer />
 
+@inject TypeofabsenceServices typeofabsenceServices
+
+@inject IToaster toaster
 
 @code {
 
+    public REGISTRODEAUSENCIAS.Blazor.Data.Models.TypeofabsenceModel Model { get; set; } = new Data.Models.TypeofabsenceModel();
+    public List<REGISTRODEAUSENCIAS.Blazor.Data.Models.TypeofabsenceModel> ListTypee { get; set; } = new List<Data.Models.TypeofabsenceModel>();
+
+    protected override void OnInitialized()
+    {
+        loadtype();
+    }
+
+    protected void loadtype()
+    {
+        var result = typeofabsenceServices.ListType();
+        ListTypee = result;
+    }
+
+    protected void AddType()
+    {
+
+        var result = typeofabsenceServices.RegisterType(Model);
+        if (result.IsSuccess)
+        {
+            Model.Id = result.Code;
+            ListTypee.Add(Model);
+
+            Model = new Data.Models.TypeofabsenceModel();
+            toaster.Success(result.Message, "OK");
+        }
+        else
+        {
+            toaster.Error(result.Message, "Error");
+        }
+    }
+
+    protected void UpTypeof(REGISTRODEAUSENCIAS.Blazor.Data.Models.TypeofabsenceModel typeabse)
+    {
+
+        var result = typeofabsenceServices.UpdateType(typeabse);
+        if (result.IsSuccess)
+        {
+            Model = new Data.Models.TypeofabsenceModel();
+            toaster.Success(result.Message, "OK");
+        }
+        else
+        {
+            toaster.Error(result.Message, "Error");
+        }
+    }
+
+    protected void DeleteType(int idType)
+    {
+        var result = typeofabsenceServices.DeleteType(idType);
+        if (result.IsSuccess)
+        {
+            loadtype();
+            toaster.Success(result.Message, "OK");
+        }
+        else
+        {
+            toaster.Error(result.Message, "Error");
+        }
+    }
 }
+

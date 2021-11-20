@@ -1,0 +1,149 @@
+﻿@page "/absence"
+
+
+<div class="container-fluid">
+    <div class="card">
+        <div class="card-header">
+            <div class="card-title">
+                <h4>AUSENCIAS</h4>
+            </div>
+        </div>
+        <div class="card-body">
+            <EditForm Model="Model" OnValidSubmit="AddAbsence">
+                <DataAnnotationsValidator></DataAnnotationsValidator>
+                <div class="row mb-3">
+                    <div class="col-md-4">
+                        <label>Empleado</label>
+                        <select class="form-control" @bind="Model.IdEmployee">
+                            @if (ListEmployees != null)
+                            {
+                                @foreach (var Empl in ListEmployees)
+                                {
+                                    <option value="@Empl.Id">@Empl.Names</option>
+                                }
+                            }
+                        </select>
+                        <ValidationMessage For="(()=>Model.IdEmployee)" />
+                    </div>
+                    <div class="col-md-4">
+                        <label>Tipo de ausencia</label>
+                        <select class="form-control" @bind="Model.IdAbsence">
+                            @if (ListType != null)
+                            {
+                                @foreach (var typeabse in ListType)
+                                {
+                                    <option value="@typeabse.Id">@typeabse.Name</option>
+                                }
+                            }
+                        </select>
+                        <ValidationMessage For="(()=>Model.IdAbsence)" />
+                    </div>
+                    <div class="col-md-2">
+                        <label>Fecha</label>
+                        <input type="datetime" class="form-control" />
+                        <ValidationMessage For="(()=>Model.Date)" />
+                    </div>
+                    <div class="col-md-2">
+                        <label># de horas</label>
+                        <input type="number" class="form-control" @bind="Model.Hours" />
+                        <ValidationMessage For="(()=>Model.Hours)" />
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-12">
+                        <label>Observación</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Observaciones" @bind="Model.ObservationsObservationsObservations" />
+                            <div class="input-group-append">
+                                <button type="submit" class="btn btn-primary">Agregar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </EditForm>
+                <div class="row">
+                    <div class="col-12">
+                        <table class="table table-bordered table-sm">
+                            <thead>
+                                <tr>
+                                    <th>Empleado</th>
+                                    <th>Fecha</th>
+                                    <th>Tipo</th>
+                                    <th>Horas</th>
+                                    <th>Observación</th>
+                                    <th>Opciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <input type="text" class="form-control" />
+                                    </td>
+                                    <td>
+                                        <input type="date" class="form-control" />
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control" />
+                                    </td>
+                                    <td>
+                                        <input type="number" class="form-control" />
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control" />
+                                    </td>
+                                    <td>
+                                        <button type="button" class="btn btn-success btn-sm"><i class="oi oi-circle-check"></i></button>
+
+                                        <button type="button" class="btn btn-danger btn-sm"><i class="oi oi-circle-x"></i></button>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+
+
+                    </div>
+                </div>
+
+        </div>
+    </div>
+</div>
+<ToastContainer />
+@inject IToaster toaster
+
+@inject AbsenceServices absenceServices
+@inject TypeofabsenceServices typeofabsenceServices
+@inject EmployeeServices employeeServices
+
+@code {
+
+    public REGISTRODEAUSENCIAS.Blazor.Data.Models.AbsenceModel Model { get; set; } = new Data.Models.AbsenceModel();
+    public List<REGISTRODEAUSENCIAS.Blazor.Data.Models.AbsenceModel> ListAsence { get; set; }
+    public List<REGISTRODEAUSENCIAS.Blazor.Data.Models.EmployeeModel> ListEmployees { get; set; }
+    public List<REGISTRODEAUSENCIAS.Blazor.Data.Models.TypeofabsenceModel> ListType { get; set; }
+
+    protected override void OnInitialized()
+    {
+        ListEmployees = employeeServices.ListEmployees();
+        ListType = typeofabsenceServices.ListType();
+    }
+
+    protected void AddAbsence()
+    {
+
+        var result = absenceServices.RegisterAbsence(Model);
+        if (result.IsSuccess)
+        {
+            Model.Id = result.Code;
+            ListAsence.Add(Model);
+
+            Model = new Data.Models.AbsenceModel();
+            toaster.Success(result.Message, "OK");
+        }
+        else
+        {
+            toaster.Error(result.Message, "Error");
+        }
+    }
+
+}

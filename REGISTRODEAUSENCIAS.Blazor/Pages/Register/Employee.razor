@@ -4,63 +4,64 @@
     <div class="card">
         <div class="card-header">
             <div class="card-title">
-                <h4>Empleados</h4>
+                <h4>EMPLEADOS</h4>
             </div>
         </div>
         <div class="card-body">
-            <div class="row mb-3">
-                <div class="col-md-6">
-                    <label>Nombres</label>
-                    <input type="text" class="form-control" placeholder="Nombres" @bind="Model.Names"/>
-                </div>
-                <div class="col-md-6">
-                    <label>Apellidos</label>
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Apellidos" @bind="Model.Surnames"/>
-                        <div class="input-group-append">
-                            <button type="submit" class="btn btn-primary" @onclick="AddEmployee">Agregar</button>
+            <EditForm Model="Model" OnValidSubmit="AddEmployee">
+                <DataAnnotationsValidator></DataAnnotationsValidator>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label>Nombres</label>
+                        <input type="text" class="form-control" placeholder="Nombres" @bind="Model.Names" />
+                        <ValidationMessage For="(()=>Model.Names)" />
+                    </div>
+                    <div class="col-md-6">
+                        <label>Apellidos</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Apellidos" @bind="Model.Surnames" />
+                            <div class="input-group-append">
+                                <button type="submit" class="btn btn-primary">Agregar</button>
+                            </div>
                         </div>
+                            <ValidationMessage For="(()=>Model.Surnames)" />
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-12">
-                    <table class="table table-bordered table-sm">
-                        <thead>
-                            <tr>
-                                <th>Id</th>
-                                <th>Nombres</th>
-                                <th>Apellidos</th>
-                                <th>Opciones</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var empl in ListEmployee)
-                            {
-                            <tr>
-                                <td>
-                                    <input type="text" class="form-control" @bind="empl.Id" />
-                                </td>
-                                <td>
-                                    <input type="text" class="form-control" @bind="empl.Names" />
-                                </td>
-                                <td>
-                                    <input type="text" class="form-control" @bind="empl.Surnames"/>
-                                </td>
-                                <td>
-                                    <button type="button" class="btn btn-success btn-sm" @onclick="(()=>UpdateEmployee(empl))"><i class="fa fa-save"></i>Guardar</button>
+            </EditForm>
+                <div class="row">
+                    <div class="col-12">
+                        <table class="table table-bordered table-sm">
+                            <thead>
+                                <tr>
+                                    <th>Nombres</th>
+                                    <th>Apellidos</th>
+                                    <th>Opciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var empl in ListEmployee)
+                                {
+                                    <tr>
+                                        <td>
+                                            <input type="text" class="form-control" @bind="empl.Names" />
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-control" @bind="empl.Surnames" />
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn btn-success btn-sm" @onclick="(()=>UpdateEmployee(empl))"><i class="fa fa-save"></i>Guardar</button>
 
-                                    <button type="button" class="btn btn-danger btn-sm" @onclick="(()=>DeleteEmployee(empl.Id))"><i class="fa fa-trash"></i>Eliminar</button>
-                                </td>
-                            </tr>
-                            }
+                                            <button type="button" class="btn btn-danger btn-sm" @onclick="(()=>DeleteEmployee(empl.Id))"><i class="fa fa-trash"></i>Eliminar</button>
+                                        </td>
+                                    </tr>
+                                }
 
-                        </tbody>
-                    </table>
+                            </tbody>
+                        </table>
 
 
+                    </div>
                 </div>
-            </div>
         </div>
     </div>
 </div>

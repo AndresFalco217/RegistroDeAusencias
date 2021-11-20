@@ -104,6 +104,76 @@ using Sotsera.Blazor.Toaster;
         {
         }
         #pragma warning restore 1998
+#nullable restore
+#line 65 "C:\SIEMPRE.NET\CURSO PRACTICO\PROYECTO REGISTROAUSEN\REGISTRODEAUSENCIAS.Blazor\Pages\Register\TypeAbsence.razor"
+       
+
+    public REGISTRODEAUSENCIAS.Blazor.Data.Models.TypeofabsenceModel Model { get; set; } = new Data.Models.TypeofabsenceModel();
+    public List<REGISTRODEAUSENCIAS.Blazor.Data.Models.TypeofabsenceModel> ListTypee { get; set; } = new List<Data.Models.TypeofabsenceModel>();
+
+    protected override void OnInitialized()
+    {
+        loadtype();
+    }
+
+    protected void loadtype()
+    {
+        var result = typeofabsenceServices.ListType();
+        ListTypee = result;
+    }
+
+    protected void AddType()
+    {
+
+        var result = typeofabsenceServices.RegisterType(Model);
+        if (result.IsSuccess)
+        {
+            Model.Id = result.Code;
+            ListTypee.Add(Model);
+
+            Model = new Data.Models.TypeofabsenceModel();
+            toaster.Success(result.Message, "OK");
+        }
+        else
+        {
+            toaster.Error(result.Message, "Error");
+        }
+    }
+
+    protected void UpTypeof(REGISTRODEAUSENCIAS.Blazor.Data.Models.TypeofabsenceModel typeabse)
+    {
+
+        var result = typeofabsenceServices.UpdateType(typeabse);
+        if (result.IsSuccess)
+        {
+            Model = new Data.Models.TypeofabsenceModel();
+            toaster.Success(result.Message, "OK");
+        }
+        else
+        {
+            toaster.Error(result.Message, "Error");
+        }
+    }
+
+    protected void DeleteType(int idType)
+    {
+        var result = typeofabsenceServices.DeleteType(idType);
+        if (result.IsSuccess)
+        {
+            loadtype();
+            toaster.Success(result.Message, "OK");
+        }
+        else
+        {
+            toaster.Error(result.Message, "Error");
+        }
+    }
+
+#line default
+#line hidden
+#nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IToaster toaster { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private TypeofabsenceServices typeofabsenceServices { get; set; }
     }
 }
 #pragma warning restore 1591

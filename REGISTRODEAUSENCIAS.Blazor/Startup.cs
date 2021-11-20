@@ -35,6 +35,8 @@ namespace REGISTRODEAUSENCIAS.Blazor
 
             services.AddTransient<DBEMPLEADOSContext>();
             services.AddTransient<EmployeeServices>();
+            services.AddTransient<TypeofabsenceServices>();
+            services.AddTransient<AbsenceServices>();
 
             // Add the library to the DI system
             services.AddToaster(config =>
